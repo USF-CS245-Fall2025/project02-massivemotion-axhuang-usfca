@@ -120,6 +120,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
     * @return none
     */
     public void generate(char input) {
+
         int newBodyX;
         int newBodyY;
         if(input == 'X') {
@@ -137,6 +138,8 @@ public class MassiveMotion extends JPanel implements ActionListener {
             }
             newBodyY = this.random.nextInt(this.window_size_y + 1);            
         }
+
+        // Making sure the velocities can't be 0 with the while loops
         int newBodyXVelocity = 0;
         int newBodyYVelocity = 0;
         while(newBodyXVelocity == 0) {
@@ -151,6 +154,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
             yTempVelocity -= this.body_velocity;
             newBodyYVelocity = yTempVelocity;
         }
+        
         Body newBody = new Body(newBodyX, newBodyY, newBodyXVelocity, newBodyYVelocity, this.body_size, Color.BLACK);
         this.bodies.add(newBody);
     }
@@ -173,8 +177,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
                 Body tempBody = this.bodies.get(i);
                 tempBody.move();
                 if (tempBody.x < 0 || tempBody.x > this.window_size_x || tempBody.y < 0 || tempBody.y > this.window_size_y) {
-                    Body remBody = this.bodies.remove(i);
-                    System.out.println("There are " + this.bodies.size() + " bodies left!");
+                    this.bodies.remove(i);
                 }
             }
         } catch (Exception e) {
