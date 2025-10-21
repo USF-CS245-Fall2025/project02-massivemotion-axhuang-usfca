@@ -120,14 +120,4 @@ public class DoublyLinkedList<T> implements List<T>{
         return this.size;
     }
 
-    public void printList()  {
-        for (int i = 0; i < this.size; i++) {
-            try {
-            System.out.println(i + " value is " + get(i));
-            } catch (Exception e) {
-                System.err.println("Something wrong with print");
-                System.exit(0);
-            }
-        }
-    }
 }
