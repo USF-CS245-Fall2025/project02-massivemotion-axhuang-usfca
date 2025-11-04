@@ -18,13 +18,13 @@ public class ArrayList<T> implements List<T> {
         arr = new_arr;
     }
 
-    @Override
     /** add method inserts a specified element at a specified index in the array.
     * @param int for the index being inserted at
     * @param T for the element being inserted
     * @return none
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public void add(int index, T element) throws Exception {
         if (index < 0 || index > size) {
             throw new Exception("Invalid add location!");
@@ -39,12 +39,12 @@ public class ArrayList<T> implements List<T> {
         size++;
     }
 
-    @Override
     /** add method inserts a specified element at the first empty index in the array (becoming
     * the last element).
     * @param T for the element being inserted
     * @return none
     */
+    @Override
     public boolean add(T element) {
         if (size == arr.length) {
             grow_array();
@@ -54,12 +54,12 @@ public class ArrayList<T> implements List<T> {
         return true;
     }
 
-    @Override
     /** get method returns the element at a specified index in the array.
     * @param int for the index of the value that wants to be retrieved
     * @return The element at the inputted index
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T get(int index) throws Exception {
         if(index >= size || index < 0) {
             throw new Exception("Index out of bounds!");
@@ -67,13 +67,13 @@ public class ArrayList<T> implements List<T> {
         return arr[index];
     }
 
-    @Override
     /** remove method returns the element at a specified index in the array after having
     * deleted it from the array (and shifting the array so there isn't an empty slot between values).
     * @param int for the index of the value that is being removed
     * @return The element at the inputted index
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T remove(int index) throws Exception{
         if (index < 0 || index >= size) {
             throw new Exception("Index out of bounds!");
@@ -86,10 +86,10 @@ public class ArrayList<T> implements List<T> {
         return retVal;
     }
 
-    @Override
     /** size method returns the amount of elements in the list.
     * @return The amount of values stored in the list
     */
+    @Override
     public int size() {
         return size;
     }

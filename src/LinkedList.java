@@ -21,7 +21,7 @@ public class LinkedList<T> implements List<T>{
     }
 
     //add code taken from slides and modified
-    @Override
+
     /** add method inserts a node with the specified element as its data at a specified
     * index in the list. Utilizes multiple edge cases to handle situations like adding to
     * an empty list and adding to the head/tail of a list.
@@ -30,6 +30,7 @@ public class LinkedList<T> implements List<T>{
     * @return none
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public void add(int index, T element) throws Exception {
         if (index < 0 || index > size) {
             throw new Exception("Invalid add location!");
@@ -55,12 +56,12 @@ public class LinkedList<T> implements List<T>{
         size++;
     }
 
-    @Override
     /** add method inserts a node with the inputted element as its data at 
     * the end (tail) of the list. The only edge case is if the list is empty.
     * @param T for the data of the node being inserted
     * @return none
     */
+    @Override
     public boolean add(T element) {
         Node myNode = new Node<T>(element);
         if (head == null) {
@@ -75,12 +76,13 @@ public class LinkedList<T> implements List<T>{
     }
 
     //get code taken from slides
-    @Override
+
     /** get method returns the data of the node at a specified index in the list.
     * @param int for the index of the node whose data is being retrieved
     * @return The data of the node at the inputted index
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T get(int index) throws Exception {
         if(index >= size || index < 0) {
             throw new Exception("Index out of bounds!");
@@ -93,7 +95,7 @@ public class LinkedList<T> implements List<T>{
     }
 
     //remove code taken from slides and modified
-    @Override
+
     /** remove method returns the data of the node at a specified index in the list after having
     * removed it from the list (and organizing its neighboring nodes properly). Utilizes multiple
     * edge cases to handle situations like removing from a list with only 1 value and removing the 
@@ -102,6 +104,7 @@ public class LinkedList<T> implements List<T>{
     * @return The data of the removed node
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T remove(int index) throws Exception{
         if (index < 0 || index >= size) {
             throw new Exception("Index out of bounds!");
@@ -132,10 +135,10 @@ public class LinkedList<T> implements List<T>{
         return (T) retNode.data;
     }
 
-    @Override
     /** size method returns the amount of nodes in the list.
     * @return The amount of nodes stored in the list
     */
+    @Override
     public int size() {
         return size;
     }

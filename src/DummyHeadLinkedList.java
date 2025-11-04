@@ -22,7 +22,6 @@ public class DummyHeadLinkedList<T> implements List<T>{
         size = 0;
     }
 
-    @Override
     /** add method inserts a node with the specified element as its data at a specified
     * index in the list. Because of the dummyhead format, the only edge case is if tail
     * needs to be changed.
@@ -31,6 +30,7 @@ public class DummyHeadLinkedList<T> implements List<T>{
     * @return none
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public void add(int index, T element) throws Exception {
         if (index < 0 || index > size) {
             throw new Exception("Invalid add location!");
@@ -48,13 +48,13 @@ public class DummyHeadLinkedList<T> implements List<T>{
         size++;
     }
 
-    @Override
     /** add method inserts a node with the inputted element as its data at 
     * the end (tail) of the list. Because of the dummyhead format, there are
     * no edge cases.
     * @param T for the data of the node being inserted
     * @return none
     */
+    @Override
     public boolean add(T element) {
         Node myNode = new Node<T>(element);
         tail.next = myNode;
@@ -63,12 +63,12 @@ public class DummyHeadLinkedList<T> implements List<T>{
         return true;
     }
 
-    @Override
     /** get method returns the data of the node at a specified index in the list.
     * @param int for the index of the node whose data is being retrieved
     * @return The data of the node at the inputted index
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T get(int index) throws Exception {
         if(index >= size || index < 0) {
             throw new Exception("Index out of bounds!");
@@ -80,7 +80,6 @@ public class DummyHeadLinkedList<T> implements List<T>{
         return (T) curr.data;
     }
 
-    @Override
     /** remove method returns the data of the node at a specified index in the list after having
     * removed it from the list (and organizing its neighboring nodes properly). Because of the 
     * dummyhead format, the only edge case is if tail is being removed.
@@ -88,6 +87,7 @@ public class DummyHeadLinkedList<T> implements List<T>{
     * @return The data of the removed node
     * @exception Exception if the inputted index is out of bounds of the size
     */
+    @Override
     public T remove(int index) throws Exception{
         if (index < 0 || index >= size) {
             throw new Exception("Index out of bounds!");
@@ -109,10 +109,10 @@ public class DummyHeadLinkedList<T> implements List<T>{
         return (T) retNode.data;
     }
 
-    @Override
     /** size method returns the amount of nodes in the list.
     * @return The amount of nodes stored in the list
     */
+    @Override
     public int size() {
         return size;
     }
