@@ -5,68 +5,93 @@ public class ArrayList<T> implements List<T> {
 
     // Constructor taken from slides;
     public ArrayList() {
-        this.arr = (T[]) new Object[10];
-        this.size = 0;
+        arr = (T[]) new Object[10];
+        size = 0;
     }
 
     // grow_array method taken from slides
     private void grow_array() {
-        T [] new_arr = (T[]) new Object[this.arr.length * 3 / 2 + 1];
-        for (int i = 0; i < this.arr.length; i++) {
-            new_arr[i] = this.arr[i];
+        T [] new_arr = (T[]) new Object[arr.length * 3 / 2 + 1];
+        for (int i = 0; i < arr.length; i++) {
+            new_arr[i] = arr[i];
         }
-        this.arr = new_arr;
+        arr = new_arr;
     }
 
     @Override
+    /** add method inserts a specified element at a specified index in the array.
+    * @param int for the index being inserted at
+    * @param T for the element being inserted
+    * @return none
+    * @exception Exception if the inputted index is out of bounds of the size
+    */
     public void add(int index, T element) throws Exception {
-        if (index < 0 || index > this.size) {
+        if (index < 0 || index > size) {
             throw new Exception("Invalid add location!");
         }
-        if (this.size == this.arr.length) {
+        if (size == arr.length) {
             grow_array();
         }
-        for (int i = this.size; i > index; i--) {
-            this.arr[i] = this.arr[i-1];
+        for (int i = size; i > index; i--) {
+            arr[i] = arr[i-1];
         }
-        this.arr[index] = element;
-        this.size++;
+        arr[index] = element;
+        size++;
     }
 
     @Override
+    /** add method inserts a specified element at the first empty index in the array (becoming
+    * the last element).
+    * @param T for the element being inserted
+    * @return none
+    */
     public boolean add(T element) {
-        if (this.size == this.arr.length) {
+        if (size == arr.length) {
             grow_array();
         }
-        this.arr[this.size] = element;
-        this.size++;
+        arr[size] = element;
+        size++;
         return true;
     }
 
     @Override
+    /** get method returns the element at a specified index in the array.
+    * @param int for the index of the value that wants to be retrieved
+    * @return The element at the inputted index
+    * @exception Exception if the inputted index is out of bounds of the size
+    */
     public T get(int index) throws Exception {
-        if(index >= this.size || index < 0) {
+        if(index >= size || index < 0) {
             throw new Exception("Index out of bounds!");
         }
-        return this.arr[index];
+        return arr[index];
     }
 
     @Override
+    /** remove method returns the element at a specified index in the array after having
+    * deleted it from the array (and shifting the array so there isn't an empty slot between values).
+    * @param int for the index of the value that is being removed
+    * @return The element at the inputted index
+    * @exception Exception if the inputted index is out of bounds of the size
+    */
     public T remove(int index) throws Exception{
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index >= size) {
             throw new Exception("Index out of bounds!");
         }
-        T retVal = this.arr[index];
-        for (int i = index; i < this.size - 1; i++) {
-            this.arr[i] = this.arr[i+1];
+        T retVal = arr[index];
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i+1];
         }
-        this.size--;
+        size--;
         return retVal;
     }
 
     @Override
+    /** size method returns the amount of elements in the list.
+    * @return The amount of values stored in the list
+    */
     public int size() {
-        return this.size;
+        return size;
     }
 
 }
